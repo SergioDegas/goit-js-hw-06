@@ -8,27 +8,29 @@ let refs = {
   btnDestroy: document.querySelector("[data-destroy]"),
   boxes: document.querySelector("#boxes"),
 };
-console.log(refs);
-
-refs.input.addEventListener("input", inputCurrentValue);
-refs.btnCreate.addEventListener("click", createBox);
-refs.btnDestroy.addEventListener("click", destroyBox);
-
-function inputCurrentValue(event) {
-  event.currentTarget.value;
-}
-function createBox() {
-  for (let i = 0; i < refs.input.value; i += 1) {
-    const create = `<div style = "background-color: ${getRandomHexColor()};
- width: ${30 + i * 10}px;
-height: ${30 + i * 10}px"></div>`;
-    refs.boxes.insertAdjacentHTML("beforeend", create);
-    
-  }
-}
-function destroyBox() {
-   refs.boxes.innerHTML = "";
+const createBoxes = amount => {
+	const createDiv = []
+	for (let i = 0; i < amount; i+=1) {
+		const div = document.createElement('div')
+		div.style.height = `${30 + 10 * i}px`
+		div.style.width = `${30 + 10 * i}px`
+		div.style.background = getRandomHexColor()
+		createDiv.push(div);
+	}
+	return createDiv;
 }
 
+const destroyBoxes = () => {
+	refs.boxes.innerHTML = ''
+}
 
-console.log(refs.boxes);
+refs.btnCreate.addEventListener('click', () => {
+	let boxesToAdd = createBoxes(refs.input.value)
+	boxes.append(...boxesToAdd)
+})
+
+console.log(refs.input.value);
+
+refs.btnDestroy.addEventListener('click', () => {
+	destroyBoxes.call()
+})

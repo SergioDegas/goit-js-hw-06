@@ -9,11 +9,14 @@ function imputCange(event) {
   // event.currentTarget.value;
 //   console.log(event);
   // event.currentTarget.value;
+  // spanEl.textContent.preventDefault();
   spanEl.textContent = event.currentTarget.value;
-    
+     if (event.currentTarget.value === "") {
+       spanEl.textContent = "Anonymous";
+     }
 }
 
-    // console.log(imputEl);
+    console.log(spanEl);
 
 
 

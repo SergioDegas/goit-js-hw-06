@@ -1,31 +1,13 @@
 const form = document.querySelector(".login-form");
 form.addEventListener("submit", formSubmit);
-// form.setAttribute('name', 'name')
 const inputEl = form.querySelectorAll("input");
-//  inputEl = form.children[1];
-console.log(inputEl);
-//    form.after(input.name)
-// function formSubmit(event) {
-//   event.preventDefault();
-//     const formData = new FormData(event.currentTarget);
-//     formData.forEach((value, name) => {
-//         if (value === "") {
-//           alert("Заповни пусты поля!");
-//         } else {
-//           console.log(name, value);
-//         }
-
-// })
-
-// }
-
 function formSubmit(event) {
   event.preventDefault();
   const {
     elements: { email, password },
   } = event.currentTarget;
   if (email.value === "" || password.value === "") {
-    alert("Заповни пусті поля!");
+    return alert("Заповни пусті поля!");
   }
 
 
@@ -34,7 +16,7 @@ function formSubmit(event) {
     password: password.value,
   };
   console.log("userData", userData);
-form.reset();
+event.currentTarget.reset();
 
 }
 // form.reset();
